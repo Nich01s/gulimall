@@ -1,0 +1,23 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: gulimall-coupon
+  datasource:
+    url: jdbc:mysql://101.133.141.129:3306/gulimall_sms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 13917591507Abc
+    driver-class-name: com.mysql.cj.jdbc.Driver   # mysql8.0以上版本使用该数据库驱动
+  cloud:
+    nacos:
+      config:
+        server-addr: 101.133.141.129:8848 # SpringCloud Alibaba-Nacos注册服务地址
+      discovery:
+        server-addr: 101.133.141.129:8848 # SpringCloud Alibaba-Nacos发现服务地址
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml # classpath*表示不仅扫描自己的类路径，还扫描当前依赖的所有jar包的类路径
+  global-config:
+    db-config:
+      id-type: auto # 主键调整为自增（代码生成器默认并不是自增）
+
