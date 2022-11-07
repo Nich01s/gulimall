@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: gulimall-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.133.141.129:8848 # SpringCloud Alibaba-Nacos服务注册发现地址
+    gateway:
+      routes:
+        - id: product_route  # 商品服务路由
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**  # 路由断言
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}  # 路径重写
+
+        - id: admin_route  # renren-fast服务路由
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**  # 路由断言
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}  # 路径重写
+
+server:
+  port: 88

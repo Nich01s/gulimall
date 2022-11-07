@@ -10,8 +10,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver   # mysql8.0以上版本使用该数据库驱动
   cloud:
     nacos:
-      config:
-        server-addr: 101.133.141.129:8848 # SpringCloud Alibaba-Nacos注册服务地址
       discovery:
         server-addr: 101.133.141.129:8848 # SpringCloud Alibaba-Nacos发现服务地址
 
